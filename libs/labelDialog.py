@@ -42,6 +42,7 @@ class LabelDialog(QDialog):
                 self.listWidget.addItem(item)
             self.listWidget.itemClicked.connect(self.listItemClick)
             self.listWidget.itemDoubleClicked.connect(self.listItemDoubleClick)
+            self.listWidget.itemSelectionChanged.connect(self.listItemSelectionChanged)
             layout.addWidget(self.listWidget)
 
         self.setLayout(layout)
@@ -81,3 +82,6 @@ class LabelDialog(QDialog):
     def listItemDoubleClick(self, tQListWidgetItem):
         self.listItemClick(tQListWidgetItem)
         self.validate()
+        
+    def listItemSelectionChanged(self):
+        self.listItemClick(self.listWidget.item(self.listWidget.currentRow())) #dynamically sets the widget label when you select a class

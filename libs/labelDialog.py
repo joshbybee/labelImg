@@ -67,6 +67,14 @@ class LabelDialog(QDialog):
         self.edit.setText(text)
         self.edit.setSelection(0, len(text))
         self.edit.setFocus(Qt.PopupFocusReason)
+        
+        if(text != ''):
+            # Loops through all items in widget and selects previously selected, to allow for quick type-ahead 
+            for i in range(self.listWidget.count()):
+                if(text == self.listWidget.item(i).text()):
+                    self.listWidget.setCurrentItem(self.listWidget.item(i))
+                    self.listWidget.setFocus(Qt.TabFocusReason)
+         
         if move:
             self.move(QCursor.pos())
         return self.edit.text() if self.exec_() else None

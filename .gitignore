@@ -18,3 +18,4 @@ cscope*
 .subvimrc
 .vscode
 *.pkl
+data/predefined_classes.txt
